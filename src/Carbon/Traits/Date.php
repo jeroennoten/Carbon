@@ -1136,7 +1136,7 @@ trait Date
     protected function getTranslatedFormByRegExp($baseKey, $keySuffix, $context, $subKey, $defaultValue)
     {
         $key = $baseKey.$keySuffix;
-        $standaloneKey = "${key}_standalone";
+        $standaloneKey = "{$key}_standalone";
         $baseTranslation = $this->getTranslationMessage($key);
 
         if ($baseTranslation instanceof Closure) {
@@ -1145,7 +1145,7 @@ trait Date
 
         if (
             $this->getTranslationMessage("$standaloneKey.$subKey") &&
-            (!$context || ($regExp = $this->getTranslationMessage("${baseKey}_regexp")) && !preg_match($regExp, $context))
+            (!$context || ($regExp = $this->getTranslationMessage("{$baseKey}_regexp")) && !preg_match($regExp, $context))
         ) {
             $key = $standaloneKey;
         }
@@ -2311,7 +2311,7 @@ trait Date
             return 'millennia';
         }
 
-        return "${unit}s";
+        return "{$unit}s";
     }
 
     protected function executeCallable($macro, ...$parameters)
@@ -2422,7 +2422,7 @@ trait Date
             if (substr($unit, 0, 4) === 'Real') {
                 $unit = static::singularUnit(substr($unit, 4));
 
-                return $this->{"${action}RealUnit"}($unit, ...$parameters);
+                return $this->{"{$action}RealUnit"}($unit, ...$parameters);
             }
 
             if (preg_match('/^(Month|Quarter|Year|Decade|Century|Centurie|Millennium|Millennia)s?(No|With|Without|WithNo)Overflow$/', $unit, $match)) {
@@ -2433,7 +2433,7 @@ trait Date
         }
 
         if (static::isModifiableUnit($unit)) {
-            return $this->{"${action}Unit"}($unit, $parameters[0] ?? 1, $overflow);
+            return $this->{"{$action}Unit"}($unit, $parameters[0] ?? 1, $overflow);
         }
 
         $sixFirstLetters = substr($unit, 0, 6);
