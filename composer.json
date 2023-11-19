@@ -64,6 +64,9 @@
             "providers": [
                 "Carbon\\Laravel\\ServiceProvider"
             ]
+        },
+        "branch-alias": {
+            "dev-1.37.0-php8.2": "1.37.0-dev"
         }
     }
 }
