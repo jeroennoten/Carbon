@@ -528,7 +528,7 @@ trait Creator
 
         if ($date instanceof DateTimeInterface) {
             $instance = static::instance($date);
-            $instance::setLastErrors($lastErrors);
+            $instance::setLastErrors($lastErrors !== false ? $lastErrors : []);
 
             return $instance;
         }
