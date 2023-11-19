@@ -623,6 +623,7 @@ trait Date
      *
      * @link http://php.net/manual/en/datetime.gettimezone.php
      */
+    #[\ReturnTypeWillChange]
     public function getTimezone()
     {
         return CarbonTimeZone::instance(parent::getTimezone());
@@ -1400,6 +1401,7 @@ trait Date
      *
      * @return static|CarbonInterface
      */
+    #[\ReturnTypeWillChange]
     public function setTimezone($value)
     {
         /** @var static $date */

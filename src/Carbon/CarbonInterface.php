@@ -2459,6 +2459,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return array|string
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize();
 
     /**
@@ -2739,7 +2740,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @see https://php.net/manual/en/datetime.modify.php
      */
-    public function modify($modify);
+    public function modify(string $modify);
 
     /**
      * Determines if the instance is not equal to another
@@ -3061,7 +3062,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      */
     public function set($name, $value = null);
 
-    public function setDate($year, $month, $day);
+    public function setDate(int $year, int $month, int $day);
 
     /**
      * Set the year, month, and date for this instance to that of the passed instance.
@@ -3119,7 +3120,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @see https://php.net/manual/en/datetime.setisodate.php
      */
-    public function setISODate($year, $week, $day = 1);
+    public function setISODate(int $year, int $week, int $day = 1);
 
     /**
      * Set the translator for the current instance.
@@ -3182,7 +3183,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @see https://php.net/manual/en/datetime.settime.php
      */
-    public function setTime($hour, $minute, $second = 0, $microseconds = 0);
+    public function setTime(int $hour, int $minute, int $second = 0, int $microseconds = 0);
 
     /**
      * Set the hour, minute, second and microseconds for this instance to that of the passed instance.
@@ -3207,7 +3208,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @see https://php.net/manual/en/datetime.settimestamp.php
      */
-    public function setTimestamp($unixtimestamp);
+    public function setTimestamp(int $unixtimestamp);
 
     /**
      * Set the instance's timezone from a string or object.

@@ -73,11 +73,11 @@ trait Creator
             $locale = setlocale(LC_NUMERIC, '0');
             setlocale(LC_NUMERIC, 'C');
         }
-        parent::__construct($time, $timezone);
+        parent::__construct((string) $time, $timezone);
         if (isset($locale)) {
             setlocale(LC_NUMERIC, $locale);
         }
-        static::setLastErrors(parent::getLastErrors());
+        static::setLastErrors(parent::getLastErrors() === false ? [] : parent::getLastErrors());
     }
 
     /**
@@ -551,6 +551,7 @@ trait Creator
      *
      * @return static|CarbonInterface|false
      */
+    #[\ReturnTypeWillChange]
     public static function createFromFormat($format, $time, $tz = null)
     {
         $function = static::$createFromFormatFunction;
@@ -789,6 +790,7 @@ trait Creator
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public static function getLastErrors()
     {
         return static::$lastErrors;
